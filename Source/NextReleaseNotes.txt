@@ -1,0 +1,3 @@
+######### Diff Tool V2
+1) Show changed status in line range (unix style). Potentially requires a change in LCS algo, while 
+creating report from matrix.

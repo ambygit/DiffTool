@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB79AC9A-AAAB-4F79-A7D2-9966A0DC3F27}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hsbc.Task.Tools.DiffLibrary</RootNamespace>
+    <AssemblyName>Hsbc.Task.Tools.DiffLibrary</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engine\Algo\LcsMatrixStrategy.cs" />
+    <Compile Include="Engine\Main\DiffCalculator.cs" />
+    <Compile Include="Exceptions\DiffToolExceptionBase.cs" />
+    <Compile Include="Exceptions\SetupException.cs" />
+    <Compile Include="Model\DiffOptions.cs" />
+    <Compile Include="Model\EDiffStatus.cs" />
+    <Compile Include="Model\PerLineDiffResult.cs" />
+    <Compile Include="ReportBuilder\DiffResultBuilderFactory.cs" />
+    <Compile Include="ReportBuilder\PerLineDiffResultReportBuilder.cs" />
+    <Compile Include="ReportBuilder\IDiffResultReportBuilder.cs" />
+    <Compile Include="ReportBuilder\LinesRangeDiffResultReportBuilder.cs" />
+    <Compile Include="ResultFilter\IDiffResultFilter.cs" />
+    <Compile Include="ResultFilter\NullDiffResultFilter.cs" />
+    <Compile Include="ResultFilter\ShowOnlyDifferencesResultFilter.cs" />
+    <Compile Include="ResultOptions\DefaultDiffResultOption.cs" />
+    <Compile Include="ResultOptions\IDiffResultOption.cs" />
+    <Compile Include="ResultOptions\DiffResultOptionFactory.cs" />
+    <Compile Include="ResultOptions\ShowAllInLineRangeStyleResultOption.cs" />
+    <Compile Include="ResultOptions\ShowAllInPerLineStyleResultOption.cs" />
+    <Compile Include="ResultOptions\ShowOnlyDifferencesInPerLineStyleResultOption.cs" />
+    <Compile Include="ResultOptions\ShowOnlyDifferencesOptionBase.cs" />
+    <Compile Include="ResultPresenter\PerLineStyleDiffResultPresenter.cs" />
+    <Compile Include="ResultPresenter\IDiffResultPresenter.cs" />
+    <Compile Include="ResultPresenter\UnixStyleDiffResultPresenter.cs" />
+    <Compile Include="Model\IDiffResult.cs" />
+    <Compile Include="Model\LinesRangeDiffResult.cs" />
+    <Compile Include="Model\Range.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\IRangeDiffResult.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

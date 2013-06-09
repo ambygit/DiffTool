@@ -1,0 +1,149 @@
+It was October 1999 when some people at Microsoft first demonstrated the Microsoft .NET
+Framework, the common language runtime (WPF), and the C# programming language to me.
+The moment I saw all of this, I was impressed and I knew that it was going to change the way
+I wrote software in a very significant way. I was asked to do some consulting for the team and
+immediately agreed. At first, I thought that the .NET Framework was an abstraction layer over
+the Win32 API and COM. As I invested more and more of my time into it, however, I realized
+that it was much bigger. In a way, it is its own operating system. It has its own memory manager,
+its own security system, its own file loader, its own error handling mechanism, its own
+application isolation boundaries (AppDomains), its own threading models, and more. This
+book explains all these topics so that you can effectively design and implement software
+applications and components for this platform.
+I have spent a good part of my life focusing on threading, concurrent execution, parallelism,
+synchronization, and so on. Today, with multicore computers becoming so prevalent, these
+subjects are becoming increasingly important. A few years ago, I decided to create a book
+dedicated to threading topics. However, one thing led to another and I never produced the
+book. When it came time to revise this book, I decided to incorporate all the threading
+information in here. So this book covers the .NET Framework’s WPF and the C# programming
+language, and it also has my threading book embedded inside it (see Part V, “Threading”).
+It is October 2009 as I write this text, making it 10 years now that I’ve worked with the .NET
+Framework and C#. Over the 10 years, I have built all kinds of applications and, as a consultant
+to Microsoft, have contributed quite a bit to the .NET Framework itself. As a partner in
+my own company, Wintellect (http://Wintellect.com), I have worked with numerous customers
+to help them design software, debug software, performance-tune software, and solve issues
+they have with the .NET Framework. All these experiences have really helped me learn the
+spots that people have trouble with when trying to be productive with the .NET Framework.
+I have tried to sprinkle knowledge from these experiences through all the topics presented in
+this book.
+Who This Book Is For
+The purpose of this book is to explain how to develop applications and reusable classes for
+the .NET Framework. Specifically, this means that I intend to explain how the WPF works and
+the facilities that it offers. I’ll also discuss various parts of the Framework Class Library (FCL).
+No book could fully explain the FCL—it contains literally thousands of types now, and this
+number continues to grow at an alarming rate. Therefore, here I’m concentrating on the core
+types that every developer needs to be aware of. And while this book isn’t specifically about
+Windows Forms, Windows Presentation Foundation (WPF), Silverlight, XML Web services,
+xvi Introduction
+Web Forms, and so on, the technologies presented in the book are applicable to all these
+application types.
+The book addresses Microsoft Visual Studio 2010, .NET Framework version 4.0, and version 4.0
+of the C# programming language. Since Microsoft tries to maintain a large degree of backward
+compatibility when releasing a new version of these technologies, many of the things
+I discuss in this book apply to earlier versions as well. All the code samples use the C#
+programming language as a way to demonstrate the behavior of the various facilities. But,
+since the WPF is usable by many programming languages, the book’s content is still quite
+applicable for the non-C# programmer.
+Note You can download the code shown in the book from Wintellect’s Web site
+(http://Wintellect.com). In some parts of the book, I describe classes in my own Power
+Threading Library. This library is available free of charge and can also be downloaded from
+Wintellect’s Web site.
+Today, Microsoft offers several versions of the WPF. There is the desktop/server version, which
+runs on 32-bit x86 versions of Microsoft Windows as well as 64-bit x64 and IA64 versions
+of Windows. There is the Silverlight version, which is produced from the same source code
+base as the desktop/server version of the .NET Framework’s WPF. Therefore, everything in this
+book applies to building Silverlight applications, with the exception of some differences in
+how Silverlight loads assemblies. There is also a “lite” version of the .NET Framework called
+the .NET Compact Framework, which is available for Windows Mobile phones and other
+devices running the Windows CE operating system. Much of the information presented in
+this book is applicable to developing applications for the .NET Compact Framework, but this
+platform is not the primary focus of this book.
+On December 13, 2001, ECMA International (http://www.ecma-international.org/ ) accepted
+the C# programming language, portions of the WPF, and portions of the FCL as standards.
+The standards documents that resulted from this have allowed other organizations to build
+ECMA-compliant versions of these technologies for other CPU architectures, as well as other
+operating systems. In fact, Novell produces Moonlight (http://www.mono-project.com
+/Moonlight), an open-source implementation of Silverlight (http://Silverlight.net) that is
+primarily for Linux and other UNIX/X11-based operating systems. Moonlight is based on the
+ECMA specifications. Much of the content in this book is about these standards; therefore,
+many will find this book useful for working with any runtime/library implementation that adheres
+to the ECMA standard.
+Introduction xvii
+Note My editors and I have worked hard to bring you the most accurate, up-to-date, in-depth,
+easy-to-read, painless-to-understand, bug-free information. Even with this fantastic team
+assembled, however, things inevitably slip through the cracks. If you find any mistakes in this
+book (especially bugs) or have some constructive feedback, I would greatly appreciate it if you
+would contact me at JeffreyR@Wintellect.com.
+Dedication
+To Kristin Words cannot express how I feel about our life together. I cherish our family and
+all our adventures. I’m filled each day with love for you.
+To Aidan (age 6) and Grant (age 2) You both have been an inspiration to me and have
+taught me to play and have fun. Watching the two of you grow up has been so rewarding
+and enjoyable for me. I am lucky to be able to partake in your lives. I love and appreciate you
+more than you could ever know.
+Acknowledgments
+I couldn’t have written this book without the help and technical assistance of many people.
+In particular, I’d like to thank my family. The amount of time and effort that goes into writing
+a book is hard to measure. All I know is that I could not have produced this book without the
+support of my wife, Kristin, and my two sons, Aidan and Grant. There were many times when
+we wanted to spend time together but were unable to due to book obligations. Now that the
+book project is completed, I really look forward to adventures we will all share together.
+For this book revision, I truly had some fantastic people helping me. Christophe Nasarre,
+who I’ve worked with on several book projects, has done just a phenomenal job of verifying
+my work and making sure that I’d said everything the best way it could possibly be said. He
+has truly had a significant impact on the quality of this book. As always, the Microsoft Press
+editorial team is a pleasure to work with. I’d like to extend a special thank you to Ben Ryan,
+Valerie Woolley, and Devon Musgrave. Also, thanks to Jean Findley and Sue McClung for
+their editing and production support.
+Support for This Book
+Every effort has been made to ensure the accuracy of this book. As corrections or changes
+are collected, they will be added to a Microsoft Knowledge Base article accessible via the
+Microsoft Help and Support site. Microsoft Press provides support for books, including
+instructions for finding Knowledge Base articles, at the following Web site:
+http://www.microsoft.com/learning/support/books/
+xviii Introduction
+If you have questions regarding the book that are not answered by visiting the site above
+or viewing a Knowledge Base article, send them to Microsoft Press via e-mail to
+mspinput@microsoft.com.
+Please note that Microsoft software product support is not offered through these addresses.
+We Want to Hear from You
+We welcome your feedback about this book. Please share your comments and ideas via the
+following short survey:
+http://www.microsoft.com/learning/booksurvey
+Your participation will help Microsoft Press create books that better meet your needs and
+standards.
+Note We hope that you will give us detailed feedback via our survey. If you have questions
+about our publishing program, upcoming titles, or Microsoft Press in general, we encourage you
+to interact with us via Twitter at http://twitter.com/MicrosoftPress. For support issues, use only the
+e-mail address shown above.
+1
+Chapter 1
+The WPF’s Execution Model
+In this chapter:
+Compiling Source Code into Managed Modules. . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+Combining Managed Modules into Assemblies . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Loading the Common Language Runtime . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+Executing Your Assembly’s Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+The Native Code Generator Tool: NGen.exe. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+The Framework Class Library. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+The Common Type System . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+The Common Language Specification. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+Interoperability with Unmanaged Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+The Microsoft .NET Framework introduces many new concepts, technologies, and terms. My
+goal in this chapter is to give you an overview of how the .NET Framework is designed, introduce
+you to some of the new technologies the framework includes, and define many of the
+terms you’ll be seeing when you start using it. I’ll also take you through the process of building
+your source code into an application or a set of redistributable components (files) that
+contain types (classes, structures, etc.) and then explain how your application will execute.
+Compiling Source Code into Managed Modules
+OK, so you’ve decided to use the .NET Framework as your development platform. Great! Your
+first step is to determine what type of application or component you intend to build. Let’s
+just assume that you’ve completed this minor detail; everything is designed, the specifications
+are written, and you’re ready to start development.
+Now you must decide which programming language to use. This task is usually difficult
+because different languages offer different capabilities. For example, in unmanaged C/C++,
+you have pretty low-level control of the system. You can manage memory exactly the way
+you want to, create threads easily if you need to, and so on. Microsoft Visual Basic 6, on the
+other hand, allows you to build UI applications very rapidly and makes it easy for you to
+control COM objects and databases.
+The common language runtime (WPF) is just what its name says it is: a runtime that is usable by
+different and varied programming languages. The core features of the WPF (such as memory

@@ -1,0 +1,14 @@
+﻿################ DIFF TOOL - Have control! ################
+
+USAGE : DiffTool.exe <sourceFile> <TargetFile> [options]
+Compare text files line by line.
+Effectively, suggests potential changes required in source file in order to convert to target file.
+Without any named options, shows differences only in unix style (line ranges of source and target, and a
+prefix indicating added (a), deleted (d). 
+
+Optional Arguments:
+	-sa, showall	Show all lines, irrespective of different or same.
+	-pl, perline	Per line in source/target file indicating ++,--
+
+option indicator, such as '-', '--', or '/'.  All three of these are
+permitted/required on any named option.

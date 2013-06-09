@@ -1,0 +1,6 @@
+But something got added in PreStage
+
+This part of the document has stayed,
+the same from version to version.
+
+This is again unchanged

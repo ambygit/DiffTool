@@ -1,0 +1,6 @@
+This part of the document has stayed,
+the same from version to version.
+
+This is again unchanged
+
+But 2 added has more to say
